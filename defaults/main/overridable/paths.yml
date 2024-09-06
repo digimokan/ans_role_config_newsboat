@@ -1,0 +1,9 @@
+# main newsboat config dir
+newsboat_user_config_dir: "/home/{{ newsboat_user_name }}/.config/newsboat"
+
+# main newsboat config file path
+newsboat_user_config_file_path: "{{ newsboat_user_config_dir }}/config"
+
+# newsboat config file containing list of podcasts to download
+newsboat_user_podcast_list_file_path: "{{ newsboat_user_config_dir }}/urls"
+

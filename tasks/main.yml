@@ -1,0 +1,6 @@
+- name: "Install Newsboat and Podboat"
+  ansible.builtin.include_tasks: install/main.yml
+
+# - name: "Configure Newsboat and Podboat"
+#   ansible.builtin.include_tasks: configure/main.yml
+

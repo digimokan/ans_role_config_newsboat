@@ -1,0 +1,7 @@
+- name: "Install the 'newsboat' application package, which includes 'podboat'"
+  ansible.builtin.package:
+    name: newsboat
+    state: present
+  become: true
+  become_user: root
+
