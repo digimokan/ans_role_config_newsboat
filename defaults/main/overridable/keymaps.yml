@@ -1,0 +1,29 @@
+# Navigation
+newsboat_keymap_go_down_one_row: "j"
+newsboat_keymap_go_up_one_row: "k"
+newsboat_keymap_go_to_first_row: "g"
+newsboat_keymap_go_to_last_row: "G"
+newsboat_keymap_quit: "q"
+
+# Newsboat-App-Specific Keymaps
+newsboat_keymap_open_highlighted_feed_or_article: "l"
+newsboat_keymap_go_to_prev_dialog: "h"
+newsboat_keymap_reload_highlighted_feed: "r"
+newsboat_keymap_reload_all_feeds: "R"
+newsboat_keymap_toggle_article_read_unread: "s"
+newsboat_keymap_mark_all_feed_articles_read: "f"
+newsboat_keymap_mark_all_feeds_read: "F"
+newsboat_keymap_go_to_next_article: "."
+newsboat_keymap_go_to_prev_article: ","
+newsboat_keymap_go_to_next_unread_article: "n"
+newsboat_keymap_go_to_prev_unread_article: "p"
+newsboat_keymap_enqueue_article_n_podboat: "e"
+
+# Podboat-App-Specific Keymaps
+podboat_keymap_download_highlighted_episode: "X"
+podboat_keymap_download_all_episodes: "x"
+podboat_keymap_cancel_highlighted_download: "c"
+podboat_keymap_dequeue_highlighted_episode: "t"
+podboat_keymap_mark_highlighted_episode_finished: "m"
+podboat_keymap_sync_finished_episodes_and_purge_queue: "u"
+

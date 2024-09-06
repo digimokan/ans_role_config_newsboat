@@ -1,0 +1,12 @@
+# when podcast feed found in Newsboat article, auto-enqueue it to Podboat
+newsboat_auto_enqueue_found_podcasts: false
+
+# confirm exit from Newsboat app (Note: does not apply to Podboat app)
+newsboat_confirm_quit: false
+
+# directory for Podboat to download user's podcasts into
+podboat_podcast_download_dir: "/home/{{ newsboat_user_name }}/Music"
+
+# maximum number of podcast episodes to download in parallel
+podboat_max_concurrent_podcast_downloads: 3
+

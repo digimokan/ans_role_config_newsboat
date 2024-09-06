@@ -1,0 +1,60 @@
+# vim: set filetype=config:
+# ANSIBLE-MANAGED CONFIGURATION FILE
+# Ref: https://newsboat.org/releases/2.36/docs/newsboat.html#_newsboat_configuration_commands
+#      https://newsboat.org/releases/2.36/docs/newsboat.html#_podboat_configuration_commands
+# Sourcing: Sourced On Newsboat/Podboat Startup
+
+################################# NEWSBOAT #####################################
+
+# when podcast feed found in Newsboat article, auto-enqueue it to Podboat
+podcast-auto-enqueue {{ 'yes' if newsboat_auto_enqueue_found_podcasts else 'no' }}
+
+# Confirm Exit From Newsboat (Not From Podboat!)
+confirm-exit {{ 'yes' if newsboat_confirm_quit else 'no' }}
+
+################################## PODBOAT #####################################
+
+# directory for Podboat to download user's podcasts into
+# Note: %n is podcast feed's name
+download-path "{{ podboat_podcast_download_dir }}/%n"
+
+# maximum number of podcast episodes to download in parallel
+max-downloads {{ podboat_max_concurrent_podcast_downloads }}
+
+############################### UNBIND ALL KEYS ################################
+
+unbind-key -a
+
+########################### KEYMAPS: NAVIGATION ################################
+
+bind-key {{ newsboat_keymap_go_down_one_row }} down
+bind-key {{ newsboat_keymap_go_up_one_row }} up
+bind-key {{ newsboat_keymap_go_to_first_row }} home
+bind-key {{ newsboat_keymap_go_to_last_row }} end
+bind-key {{ newsboat_keymap_go_to_prev_dialog }} quit
+bind-key {{ newsboat_keymap_quit }} hard-quit
+
+############################ KEYMAPS: NEWSBOAT #################################
+
+bind-key {{ newsboat_keymap_open_highlighted_feed_or_article }} open
+bind-key {{ newsboat_keymap_go_to_prev_dialog }} quit
+bind-key {{ newsboat_keymap_reload_highlighted_feed }} reload
+bind-key {{ newsboat_keymap_reload_all_feeds }} reload-all
+bind-key {{ newsboat_keymap_toggle_article_read_unread }} toggle-article-read
+bind-key {{ newsboat_keymap_mark_all_feed_articles_read }} mark-feed-read
+bind-key {{ newsboat_keymap_mark_all_feeds_read }} mark-all-feeds-read
+bind-key {{ newsboat_keymap_go_to_next_article }} next
+bind-key {{ newsboat_keymap_go_to_prev_article }} prev
+bind-key {{ newsboat_keymap_go_to_next_unread_article }} next-unread
+bind-key {{ newsboat_keymap_go_to_prev_unread_article }} prev-unread
+bind-key {{ newsboat_keymap_enqueue_article_n_podboat }} enqueue
+
+############################# KEYMAPS: PODBOAT #################################
+
+bind-key {{ podboat_keymap_download_highlighted_episode }} pb-download
+bind-key {{ podboat_keymap_download_all_episodes }} pb-toggle-download-all
+bind-key {{ podboat_keymap_cancel_highlighted_download }} pb-cancel
+bind-key {{ podboat_keymap_dequeue_highlighted_episode }} pb-delete
+bind-key {{ podboat_keymap_mark_highlighted_episode_finished }} pb-mark-as-finished
+bind-key {{ podboat_keymap_sync_finished_episodes_and_purge_queue }} pb-purge
+
