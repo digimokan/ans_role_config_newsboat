@@ -16,7 +16,7 @@
     group: "{{ newsboat_user_name }}"
     mode: '755'
   vars:
-    newsboat_cache_dir: "{{ newsboat_default_rss_tracking_db_path | dirname }}"
+    newsboat_cache_dir: "{{ newsboat_default_rss_tracking_db_path | ansible.builtin.dirname }}"
   become: true
   become_user: root
 
