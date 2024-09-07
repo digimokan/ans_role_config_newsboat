@@ -1,0 +1,22 @@
+- name: "Create user config dir at '{{ newsboat_user_config_dir }}'"
+  ansible.builtin.file:
+    path: "{{ newsboat_user_config_dir }}"
+    state: directory
+    owner: "{{ newsboat_user_name }}"
+    group: "{{ newsboat_user_name }}"
+    mode: '755'
+  become: true
+  become_user: root
+
+- name: "Create user Newsboat cache dir at '{{ newsboat_cache_dir }}'"
+  ansible.builtin.file:
+    path: "{{ newsboat_cache_dir }}"
+    state: directory
+    owner: "{{ newsboat_user_name }}"
+    group: "{{ newsboat_user_name }}"
+    mode: '755'
+  vars:
+    newsboat_cache_dir: "{{ newsboat_default_rss_tracking_db_path | dirname }}"
+  become: true
+  become_user: root
+

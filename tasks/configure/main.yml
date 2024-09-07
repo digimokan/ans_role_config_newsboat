@@ -1,3 +1,6 @@
+- name: "Create Newsboat and Podboat config dirs"
+  ansible.builtin.include_tasks: create_dirs.yml
+
 - name: "Configure main Newsboat and Podboat settings"
   ansible.builtin.include_tasks: settings.yml
 
