@@ -1,0 +1,38 @@
+- name: "Get file stats of default RSS-tracking database file at '{{ newsboat_default_rss_tracking_db_path }}'"
+  ansible.builtin.stat:
+    path: "{{ newsboat_default_rss_tracking_db_path }}"
+  register: default_database_file_stats
+
+- name: "Get file stats of saved database file at '{{ newsboat_try_link_to_saved_rss_tracking_db_path }}'"
+  ansible.builtin.stat:
+    path: "{{ newsboat_try_link_to_saved_rss_tracking_db_path }}"
+  register: saved_database_file_stats
+
+- name: "Before symlinking to saved database file, make backup copy of database file '{{ newsboat_default_rss_tracking_db_path }}'"
+  ansible.builtin.copy:
+    src: "{{ newsboat_default_rss_tracking_db_path }}"
+    dest: "{{ newsboat_default_rss_tracking_db_path }}.ansible_bkup"
+    owner: "{{ newsboat_user_name }}"
+    group: "{{ newsboat_user_name }}"
+    mode: '644'
+    force: true
+    backup: true
+  become: true
+  become_user: root
+  when: (default_database_file_stats.stat.exists) and
+        (not default_database_file_stats.stat.islnk) and
+        (saved_database_file_stats.stat.exists)
+
+- name: "Symlink default database file '{{ newsboat_default_rss_tracking_db_path }}' to database file '{{ newsboat_try_link_to_saved_rss_tracking_db_path }}'"
+  ansible.builtin.file:
+    src: "{{ newsboat_try_link_to_saved_rss_tracking_db_path }}"
+    dest: "{{ newsboat_default_rss_tracking_db_path }}"
+    owner: "{{ newsboat_user_name }}"
+    group: "{{ newsboat_user_name }}"
+    mode: '644'
+    state: link
+    force: true
+  become: true
+  become_user: root
+  when: saved_database_file_stats.stat.exists
+

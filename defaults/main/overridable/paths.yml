@@ -4,6 +4,11 @@ newsboat_user_config_dir: "/home/{{ newsboat_user_name }}/.config/newsboat"
 # main newsboat config file path
 newsboat_user_config_file_path: "{{ newsboat_user_config_dir }}/config"
 
-# newsboat config file containing list of podcasts to download
-newsboat_user_podcast_list_file_path: "{{ newsboat_user_config_dir }}/urls"
+# newsboat config file containing list of RSS feed URLs to track
+newsboat_user_rss_feed_url_list_file_path: "{{ newsboat_user_config_dir }}/urls"
+
+# newsboat stores RSS-tracking info in a database file, at this default path
+newsboat_default_rss_tracking_db_path: "{{ newsboat_user_config_dir }}/cache.db"
+# try to make symlink from the default RSS-tracking DB to a saved DB file
+newsboat_try_link_to_saved_rss_tracking_db_path: ""
 

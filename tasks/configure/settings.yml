@@ -1,0 +1,32 @@
+- name: "Create user config dir at '{{ newsboat_user_config_dir }}'"
+  ansible.builtin.file:
+    path: "{{ newsboat_user_config_dir }}"
+    state: directory
+    owner: "{{ newsboat_user_name }}"
+    group: "{{ newsboat_user_name }}"
+    mode: '755'
+  become: true
+  become_user: root
+
+- name: "Configure user Newsboat and Podboat settings in '{{ newsboat_user_config_file_path }}'"
+  ansible.builtin.template:
+    dest: "{{ newsboat_user_config_file_path }}"
+    src: "config.j2"
+    owner: "{{ newsboat_user_name }}"
+    group: "{{ newsboat_user_name }}"
+    mode: '644'
+    force: true
+  become: true
+  become_user: root
+
+- name: "Set list of user RSS feeds to track in '{{ newsboat_user_rss_feed_url_list_file_path }}'"
+  ansible.builtin.template:
+    dest: "{{ newsboat_user_rss_feed_url_list_file_path }}"
+    src: "urls.j2"
+    owner: "{{ newsboat_user_name }}"
+    group: "{{ newsboat_user_name }}"
+    mode: '644'
+    force: true
+  become: true
+  become_user: root
+

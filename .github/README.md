@@ -57,6 +57,9 @@ Install and configure the Newsboat news aggregator and Podboat podcast client.
            name: ans_role_config_newsboat
          vars:
            newsboat_user_name: "user2"
+           newsboat_rss_feed_url_list:
+             - "https://podcastfeeds.nbcnews.com/dateline-nbc"
+             - "https://feeds.npr.org/510318/podcast.xml"
    ```
 
 ## Role Options

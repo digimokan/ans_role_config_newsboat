@@ -4,6 +4,9 @@ newsboat_auto_enqueue_found_podcasts: false
 # confirm exit from Newsboat app (Note: does not apply to Podboat app)
 newsboat_confirm_quit: false
 
+# list of Newsboat RSS feed URLs
+newsboat_rss_feed_url_list: []
+
 # directory for Podboat to download user's podcasts into
 podboat_podcast_download_dir: "/home/{{ newsboat_user_name }}/Music"
 
