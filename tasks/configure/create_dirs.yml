@@ -1,4 +1,4 @@
-- name: "Create user config dir at '{{ newsboat_user_config_dir }}'"
+- name: "Create user Newsboat config dir at '{{ newsboat_user_config_dir }}'"
   ansible.builtin.file:
     path: "{{ newsboat_user_config_dir }}"
     state: directory
